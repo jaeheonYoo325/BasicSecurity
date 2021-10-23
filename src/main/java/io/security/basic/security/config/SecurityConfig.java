@@ -60,33 +60,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				.permitAll();
 		
 		http
-				.logout()
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/login")
-				.addLogoutHandler(new LogoutHandler() {
-					
-					@Override
-					public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-						
-						HttpSession session = request.getSession();
-						session.invalidate();
-					}
-				})
-				.logoutSuccessHandler(new LogoutSuccessHandler() {
-					
-					@Override
-					public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-							throws IOException, ServletException {
-
-						System.out.println("logout");
-						response.sendRedirect("/login");
-					}
-				})
-				.deleteCookies("remember-me")
-		.and()
+//				.logout()
+//				.logoutUrl("/logout")
+//				.logoutSuccessUrl("/login")
+//				.addLogoutHandler(new LogoutHandler() {
+//					
+//					@Override
+//					public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+//						
+//						HttpSession session = request.getSession();
+//						session.invalidate();
+//					}
+//				})
+//				.logoutSuccessHandler(new LogoutSuccessHandler() {
+//					
+//					@Override
+//					public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+//							throws IOException, ServletException {
+//
+//						System.out.println("logout");
+//						response.sendRedirect("/login");
+//					}
+//				})
+//				.deleteCookies("remember-me")
+//		.and()
 				.rememberMe()
-				.rememberMeParameter("remember")
-				.tokenValiditySeconds(3600)
+//				.rememberMeParameter("remember")
+//				.tokenValiditySeconds(3600)
 				.userDetailsService(userDetailsService);
 	}
 }
