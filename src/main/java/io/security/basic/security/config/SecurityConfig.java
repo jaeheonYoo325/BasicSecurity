@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.anyRequest().authenticated();
 		http
-				.formLogin();
+				.formLogin()
 //				.loginPage("/loginPage")
 //				.defaultSuccessUrl("/")
 //				.failureUrl("/login")
@@ -89,9 +89,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				.tokenValiditySeconds(3600)
 //				.userDetailsService(userDetailsService);
 		
-		http
+		.and()
 				.sessionManagement()
-				.sessionFixation().changeSessionId();
+				.maximumSessions(1)
+				.maxSessionsPreventsLogin(false);
+//		http
+//				.sessionManagement()
+//				.sessionFixation().changeSessionId();
 //				.maximumSessions(1)
 //				.maxSessionsPreventsLogin(false);
 	}
