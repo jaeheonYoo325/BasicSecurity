@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				})
 //				.permitAll();
 		
-		http
+//		http
 //				.logout()
 //				.logoutUrl("/logout")
 //				.logoutSuccessUrl("/login")
@@ -84,9 +84,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				})
 //				.deleteCookies("remember-me")
 //		.and()
-				.rememberMe()
+//				.rememberMe()
 //				.rememberMeParameter("remember")
 //				.tokenValiditySeconds(3600)
-				.userDetailsService(userDetailsService);
+//				.userDetailsService(userDetailsService);
+		
+		http
+				.sessionManagement()
+				.sessionFixation().changeSessionId();
+//				.maximumSessions(1)
+//				.maxSessionsPreventsLogin(false);
 	}
 }
