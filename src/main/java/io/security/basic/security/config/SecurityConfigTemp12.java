@@ -27,17 +27,30 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 
-@Configuration
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+//@Configuration
+//@EnableWebSecurity
+//@Order(0)
+public class SecurityConfigTemp12 extends WebSecurityConfigurerAdapter {
+
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+				.antMatcher("/admin/**")
+				.authorizeRequests()
+				.anyRequest().authenticated()
+		.and()
+				.httpBasic();
+	}
+}
+
+//@Configuration
+//@Order(1)
+class SecurityConfigTemp22 extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
-				.anyRequest().authenticated();
-
-		http
+				.anyRequest().permitAll()
+				.and()
 				.formLogin();
-		
 	}
 }
